@@ -6,6 +6,7 @@ import (
 	"crypto/sha1"
 	"crypto/sha512"
 	"flag"
+	"fmt"
 	"github.com/cespare/xxhash"
 	"github.com/xrkhill/hashmod/hashmod"
 	"hash"
@@ -94,6 +95,6 @@ func main() {
 			enabled = "false"
 		}
 
-		log.Print(enabled)
+		fmt.Print(enabled)
 	}
 }
