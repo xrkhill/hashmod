@@ -27,7 +27,7 @@ false
 $ ./hashmod -input hostname -buckets 4
 false
 
-# Use input from stdin (test behavior)
+# Use input from stdin to test behavior
 echo -e "abc.example.com\ndef.example.com" | ./hashmod_export -input stdin -buckets 2 -hashalg xxhash64
 2018/12/09 23:45:47 index: 0
 2018/12/09 23:45:47 line: abc.example.com
@@ -41,4 +41,20 @@ echo -e "abc.example.com\ndef.example.com" | ./hashmod_export -input stdin -buck
 2018/12/09 23:45:47 enabledCount: 1
 2018/12/09 23:45:47 totalCount: 2
 2018/12/09 23:45:47 percent: 50.00%
+
+# Test against a list of 100 random IP addresses
+./hashmod_export -input stdin -hashalg xxhash64 -buckets 2 < ips_random_100.txt
+2018/12/10 00:03:58 index: 0
+2018/12/10 00:03:58 line: 46.212.162.110
+2018/12/10 00:03:58 enabled: true
+2018/12/10 00:03:58 ----------
+...
+2018/12/10 00:05:59 index: 99
+2018/12/10 00:05:59 line: 208.185.157.13
+2018/12/10 00:05:59 enabled: true
+2018/12/10 00:05:59 ----------
+2018/12/10 00:05:59 buckets: 2
+2018/12/10 00:05:59 enabledCount: 55
+2018/12/10 00:05:59 totalCount: 100
+2018/12/10 00:05:59 percent: 55.00%
 ```
